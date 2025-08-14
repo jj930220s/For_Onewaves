@@ -23,8 +23,7 @@ public class Actor : MonoBehaviour
 
     public void ApplySkill(Actor target,Skill Skill)
     {
-        Skill skill = SkillDataInfo.Instance.skillDic[Skill.info.skillIndex];
-        skill.ApplySkill(this,target);
+        Skill.ApplySkill(this,target);
     }
     public void ConsumeMP(float cost)
     {

@@ -1,26 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillDataInfo : MonoSingleton<SkillDataInfo>
 {
-    // º»·¡ DataManager µîÀÇ ¿ªÇÒÀÌÁö¸¸, ÀÌ °úÁ¦ÀÇ °æ¿ì ½ºÅ³¸¸ »ç¿ëÇÏ±â¿¡ ½ºÅ©¸³Æ® ÀÌ¸§À» SkillDataInfo·Î ¼³Á¤
+    // ë³¸ë˜ DataManager ë“±ì˜ ì—­í• ì´ì§€ë§Œ, ì´ ê³¼ì œì˜ ê²½ìš° ìŠ¤í‚¬ë§Œ ì‚¬ìš©í•˜ê¸°ì— ìŠ¤í¬ë¦½íŠ¸ ì´ë¦„ì„ SkillDataInfoë¡œ ì„¤ì •
 
 
     [Header("Skill Data Info")]
     [SerializeField] private SkillData skillDataList;
 
-    public Dictionary<int, SkillInfo> skillData = new Dictionary<int, SkillInfo>();
-
+    // ìŠ¤í‚¬ë“¤ì´ ì €ì¥ë  ë”•ì…”ë„ˆë¦¬
     public Dictionary<int, Skill> skillDic = new Dictionary<int, Skill>();
 
     protected override void Awake()
     {
         base.Awake();
         skillDataList.SetSkillData();
-
-
-
     }
 
 

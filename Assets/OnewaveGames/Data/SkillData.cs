@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +7,14 @@ using UnityEngine;
 public class SkillData : ScriptableObject
 {
 
-    // ¸ğµç ½ºÅ³ ¸®½ºÆ®(ÀÎ½ºÆåÅÍ¿¡¼­ Àû¿ë)
+    // ëª¨ë“  ìŠ¤í‚¬ ë¦¬ìŠ¤íŠ¸(ì¸ìŠ¤í™í„°ì—ì„œ ì ìš©)
     [SerializeField] private List<SkillInfo> skillInfo=new List<SkillInfo>();
 
 
-    // ½ºÅ³µéÀ» µñ¼Å³Ê¸®¿¡ ÀúÀå
+    // ìŠ¤í‚¬ë“¤ì„ ë”•ì…”ë„ˆë¦¬ì— ì €ì¥
     public void SetSkillData()
     {
-        foreach(var skill in skillInfo)
-        {
-            SkillDataInfo.Instance.skillData[skill.skillIndex] = skill;
-        }
-
+        // ë”•ì…”ë„ˆë¦¬ì— SOì— ì‘ì„±ëœ ëª¨ë“  ìŠ¤í‚¬ í´ë˜ìŠ¤ ì €ì¥, í•„ìš”í•  ë•Œ skillIndexë¡œ êº¼ë‚´ ì‚¬ìš©
         foreach(var skill in skillInfo)
         {
             if (string.IsNullOrEmpty(skill.skillName))
@@ -31,7 +27,7 @@ public class SkillData : ScriptableObject
 
             if (!typeof(Skill).IsAssignableFrom(skillComponent))
             {
-                Debug.LogWarning("ÀûÀıÇÏÁö ¾ÊÀº ÀÌ¸§ "+ name);
+                Debug.LogWarning("ì ì ˆí•˜ì§€ ì•Šì€ ì´ë¦„ "+ name);
                 return;
             }
 
@@ -40,7 +36,7 @@ public class SkillData : ScriptableObject
     }
 }
 
-// °¢ ½ºÅ³¿¡ ÇÊ¿äÇÑ µ¥ÀÌÅÍ ÀúÀå ¹× Á÷·ÄÈ­
+// ê° ìŠ¤í‚¬ì— í•„ìš”í•œ ë°ì´í„° ì €ì¥ ë° ì§ë ¬í™”
 [Serializable]
 public class SkillInfo
 {

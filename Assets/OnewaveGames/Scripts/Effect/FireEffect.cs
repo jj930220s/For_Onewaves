@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +29,7 @@ public class FireEffect : Effect
 
     public override async UniTask<bool> Apply(Actor source, Actor target)
     {
+        // íˆ¬ì‚¬ì²´ ìƒì„±
         projectileObj = Object.Instantiate(projectile);
         projectileObj.transform.position=source.transform.position;
 
@@ -57,11 +58,12 @@ public class FireEffect : Effect
             if(elapsed > duration)
             {
                 isMoving = false;
-                // ÀÌÈÄ ¿ÀºêÁ§Æ®Ç®¿¡ ¾µ ¿©Áö ÀÖÀ¸¹Ç·Î ÆÄ±«ÇÏÁö ¾ÊÀ½
+                // ì´í›„ ì˜¤ë¸Œì íŠ¸í’€ì— ì“¸ ì—¬ì§€ ìˆìœ¼ë¯€ë¡œ íŒŒê´´í•˜ì§€ ì•ŠìŒ
                 projectileObj.gameObject.SetActive(false);
             }
             if(projectileComponent.isHit)
             {
+                // ë°œì‚¬ ëŒ€ìƒì´ ê¼­ ë§ì€ ëŒ€ìƒì´ë¼ê³  ì¥ë‹´í•  ìˆ˜ ì—†ê¸° ë•Œë¬¸ì— targetì´ ì•„ë‹Œ hitActor ì‚¬ìš©
                 hitActor = projectileComponent.GetTarget();
                 projectileObj.gameObject.SetActive(false);
                 break;

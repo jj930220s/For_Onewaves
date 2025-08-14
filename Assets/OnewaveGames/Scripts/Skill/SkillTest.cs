@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SkillTest : Skill
 {
+    // 스킬 저장 및 사용 테스트용 클래스.
     public SkillTest(SkillInfo info) : base(info)
     {
     }
@@ -16,12 +17,6 @@ public class SkillTest : Skill
         return await ActiveSkill(source, target);
     }
 
-    private async void CoolTimeCheck()
-    {
-        isCoolTime = true;
-        await UniTask.Delay(TimeSpan.FromSeconds(info.coolTime));
-        isCoolTime = false;
-    }
 
 
 }

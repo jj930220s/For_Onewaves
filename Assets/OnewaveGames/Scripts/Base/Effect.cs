@@ -1,9 +1,10 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 효과 종류
 public enum EffectType
 {
     COST=1,
@@ -13,6 +14,7 @@ public enum EffectType
     PULL
 }
 
+// 동시 실행 여부 판단
 public enum TimeType
 { 
     together=1,

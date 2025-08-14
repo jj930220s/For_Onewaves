@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +7,19 @@ using UnityEngine.InputSystem;
 
 public class Player : Actor
 {
-    // ÀÎ½ºÆåÅÍ¿¡¼­ ½ºÅ³ ³Ñ¹ö¸¦ ÀÔ·ÂÇÏ¸é, ÀÎ°ÔÀÓ¿¡¼­ ½ºÅ³ µ¥ÀÌÅÍ¸¦ °¡Áö°í ¿È
+    // ì¸ìŠ¤í™í„°ì—ì„œ ìŠ¤í‚¬ ë„˜ë²„ë¥¼ ì…ë ¥í•˜ë©´, ì¸ê²Œì„ì—ì„œ ìŠ¤í‚¬ ë°ì´í„°ë¥¼ ê°€ì§€ê³  ì˜´
     [SerializeField] private List<int> mySkillIndex = new List<int>();
     [SerializeField] private Dictionary<int,Skill> mySkillDic = new Dictionary<int, Skill>();
 
     [SerializeField] private CapsuleCollider enemy;
-    // Å×½ºÆ®¿ë °³Ã¼
+    // í…ŒìŠ¤íŠ¸ìš© ê°œì²´
     [SerializeField] private CapsuleCollider enemy2;
 
     private Skill nowSkill;
 
     private async void Start()
     {
-        // ÇØ´ç Ä³¸¯ÅÍÀÇ ½ºÅ³µé È¹µæ
+        // í•´ë‹¹ ìºë¦­í„°ì˜ ìŠ¤í‚¬ë“¤ íšë“
         for (int i = 0; i < mySkillIndex.Count; i++)
         {
             mySkillDic.Add(i, SkillDataInfo.Instance.skillDic[mySkillIndex[i]]);
@@ -29,6 +29,7 @@ public class Player : Actor
 
         SetSkillInfo();
 
+        // ìŠ¤í‚¬ ëª…ì¤‘ í…ŒìŠ¤íŠ¸ìš© ì êµ° ì„¤ì •
         target.Add(enemy, enemy.GetComponentInParent<Actor>());
         target.Add(enemy2, enemy2.GetComponentInParent<Actor>());
 
@@ -45,11 +46,12 @@ public class Player : Actor
 
     private async UniTask WaitSkillKey()
     {
-        // ¹öÆ°ÀÌ ´­¸±¶§±îÁö ´ë±â
+        // ë²„íŠ¼ì´ ëˆŒë¦´ë•Œê¹Œì§€ ëŒ€ê¸° 
         while (true)
         {
             await UniTask.WaitUntil(() => Keyboard.current.qKey.wasPressedThisFrame || Keyboard.current.wKey.wasPressedThisFrame);
 
+            // ëˆŒë¦° ë²„íŠ¼ì— ë”°ë¼ ë‹¤ë¥¸ ìŠ¤í‚¬ ì‚¬ìš©
             if (Keyboard.current.qKey.wasPressedThisFrame)
             {
                 TrySkill(mySkillDic[0]);
@@ -62,7 +64,7 @@ public class Player : Actor
     }
 
     /// <summary>
-    /// ÇöÀç ½ºÅ³ÀÌ 1Á¾·ùÀÌ±â ¶§¹®¿¡ ÆíÀÇ»ó °£·«È­ ÇÏ¿´½À´Ï´Ù
+    /// í˜„ì¬ ìŠ¤í‚¬ì´ 1ì¢…ë¥˜ì´ê¸° ë•Œë¬¸ì— í¸ì˜ìƒ ê°„ëµí™” í•˜ì˜€ìŠµë‹ˆë‹¤
     /// </summary>
     private void TrySkill(Skill skill) 
     {
@@ -78,7 +80,7 @@ public class Player : Actor
 
     private bool CanSkillUse(Skill skill)
     {
-        // ÀûÀÌ Á¸ÀçÇÏ´ÂÁö, ³»°¡ »ì¾ÆÀÖ´ÂÁö µîÀÇ °Ë»ç
+        // ì ì´ ì¡´ì¬í•˜ëŠ”ì§€, ë‚´ê°€ ì‚´ì•„ìˆëŠ”ì§€ ë“±ì˜ ê²€ì‚¬
         if (target == null)
         {
             return false;
@@ -87,12 +89,12 @@ public class Player : Actor
         {
             return false;
         }
-        // ÄÚ½ºÆ® °Ë»ç
+        // ì½”ìŠ¤íŠ¸ ê²€ì‚¬
         else if (MP < skill.info.cost)
         {
             return false;
         }
-        // TODO : ÄğÅ¸ÀÓ °Ë»ç
+        // TODO : ì¿¨íƒ€ì„ ê²€ì‚¬
         else if(skill.isCoolTime)
         {
             return false;
