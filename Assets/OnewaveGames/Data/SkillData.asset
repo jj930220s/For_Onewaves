@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63560aae516560043a4989abc01ea8ff, type: 3}
+  m_Name: SkillData
+  m_EditorClassIdentifier: 
+  skillInfo:
+  - skillIndex: 0
+    skillName: RocketGrab
+    range: 20
+    damage: 0
+    speed: 10
+    coolTime: 5
+    cost: 1
+    prefab: {fileID: 603015010631206045, guid: d077b7364eeb5204da01195450b8c9c9, type: 3}
+    effectList: 01000000020000000300000005000000
+  - skillIndex: 1
+    skillName: Test
+    range: 5
+    damage: 0
+    speed: 5
+    coolTime: 5
+    cost: 5
+    prefab: {fileID: 3177420981958724835, guid: e7393bc9a27cd414893b40e333b41f99, type: 3}
+    effectList: 0100000002000000
